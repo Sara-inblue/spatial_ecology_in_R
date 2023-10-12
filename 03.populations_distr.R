@@ -80,3 +80,13 @@ precmap <- rast(prec)
 
 plot(precmap)
 points(pres)
+
+par(mfrow= c(2,2))
+plot(elevmap)
+points(pres)
+plot(tempmap)
+points(pres)
+plot(vegemap)
+points(pres)
+plot(precmap)
+points(pres)

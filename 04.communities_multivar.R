@@ -11,3 +11,6 @@ libray(vegan)
 
 # the 2^ principal component is, by definition, perperndicular to the 1^ one (direction with the largest range of varibility)
 # the 1^ PC is always explaing the highest veribility, thus the one explained by the 2^ one is always smaller
+
+install.packages("overlap")
+library(overlap)

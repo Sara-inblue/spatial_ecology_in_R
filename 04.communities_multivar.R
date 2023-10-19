@@ -45,9 +45,3 @@ plcd1 + plcd2    # they alone are retaining around 70% of variabilty
 plot(ord)
 
 
-# species correlate also in time
-# sampling animals through camera traps
-
-install.packages("overlap")
-library(overlap)
-

@@ -9,9 +9,6 @@
 # the 2^ principal component is, by definition, perperndicular to the 1^ one (direction with the largest range of varibility)
 # the 1^ PC is always explaing the highest veribility, thus the one explained by the 2^ one is always smaller
 
-install.packages("overlap")
-library(overlap)
-
 install.packages("vegan")   # vegetation analysis
 library(vegan)
 
@@ -43,6 +40,14 @@ plcd2
 
 plcd1 + plcd2    # they alone are retaining around 70% of variabilty
 
-# final multivariate space
+# final multivariate space showing the correlation in space
 # it allows you to describe different environments in you dataset
 plot(ord)
+
+
+# species correlate also in time
+# sampling animals through camera traps
+
+install.packages("overlap")
+library(overlap)
+

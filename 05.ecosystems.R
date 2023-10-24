@@ -3,7 +3,6 @@
 # plants use mostly red light to carry out photosynthesis
 
 # to install packages from the CRAN
-install.packages("imageRy")
 install.packages("devtools")
 
 # to install packeges from github

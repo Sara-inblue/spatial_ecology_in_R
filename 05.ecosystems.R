@@ -13,6 +13,7 @@ library(imageRy)
 library(terra)
 
 # list the data
+# all the functions in imageRy start with im.
 im.list()
 
 # to make measuraments you use ellipsoids
@@ -28,16 +29,25 @@ im.list()
 # UTM is a map projection (way to represent the spherical Earth on a plane) system to assign cordinates to location to locations on the Earth surface
 # if you know the initil reference system you can "translate it" to another one
 
-# import the different data we're going to use
-# b2 refers to band 2 (blue)
+# import different data from Sentinel-2
+# b2 refers to band 2 (blue, 400 microns)
 b2 <- im.import("sentinel.dolomites.b2.tif")
 b2
 
-# b3 is green and b4 is red
-
 # Let's change the color
-cl <- colorRampPalette(c("dark gray", "gray", "light gray")) (100)
+cl <- colorRampPalette(c("black", "gray", "light gray")) (100)
 plot(b2, col = cl)
 
+# importing the green band
 b3 <- im.import("sentinel.dolomites.b3.tif")
 plot(b3, col = cl)
+
+# importing the red band (600 microns)
+b4 <- im.import("sentinel.dolomites.b4.tif")
+plot(b4, col = cl)
+
+# import the NIR band
+b8 <- im.import("sentinel.dolomites.b8.tif")
+plot(b8, col = cl)
+
+# Let's put all the images in a single graph

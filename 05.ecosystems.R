@@ -51,3 +51,37 @@ b8 <- im.import("sentinel.dolomites.b8.tif")
 plot(b8, col = cl)
 
 # Let's put all the images in a single graph
+par(mfrow = c(2,2))
+plot(b2, col = cl)
+plot(b3, col = cl)
+plot(b4, col = cl)
+plot(b8, col = cl)
+dev.off() # it closes the devices
+
+# stack images all together
+stacksent <- c(b2, b3, b4, b8)
+
+plot(stacksent, col = cl)
+
+# to plot just one layer from the stack we can use the number of the "element" (layer)
+plot(stacksent[[4]], col = cl)
+
+# Plot in a multiframe the bands with different color ramps
+cl2 <- colorRampPalette(c("dark blue", "blue", "light blue")) (100)
+cl3 <- colorRampPalette(c("dark green", "green", "light green")) (100)
+cl4 <- colorRampPalette(c("firebrick4", "firebrick", "red")) (100)
+cl8 <- colorRampPalette(c("orangered", "gold", "yellow")) (100)
+
+par(mfrow = c(2,2))
+plot(b2, col = cl2)
+plot(b3, col = cl3)
+plot(b4, col = cl4)
+plot(b8, col = cl8)
+
+# Using the RGB space
+# stacksent:
+# band2 blue element 1, stacksent[[1]]
+# band3 green element 2, stacksent[[2]]
+# band4 red element 3, stacksent[[3]]
+# band8 NIR element 4), stacksent[[4]]
+im.plotRGB(stacksent, r=3, g=2, b=1) # the number refers to the index of the element

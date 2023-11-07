@@ -85,3 +85,20 @@ plot(b8, col = cl8)
 # band4 red element 3, stacksent[[3]]
 # band8 NIR element 4), stacksent[[4]]
 im.plotRGB(stacksent, r=3, g=2, b=1) # the number refers to the index of the element
+
+# we take out the blue and add NIR
+# this means we're going to look at vegetation (strongly reflects NIR)
+# it is possible to discriminate beetween pasture and wood by the brightness of the red
+im.plotRGB(stacksent, r=4, g=3, b=2) 
+
+# we use the green to color NIR instead of red
+# the purple part is bare soil, rock and cities
+im.plotRGB(stacksent, r=3, g=4, b=2) 
+
+# we use ble to print the NIR
+im.plotRGB(stacksent, r=3, g=2, b=4) 
+
+# Let's look at the correlation between the info in two bands
+# we do it with the pairs function is a scatterplot matrix
+# for example with 5 band there will be 4 pairs for each to be analized and then we divide it by 2 obtain the final number of distances (they repeate once)
+pairs(stacksent)

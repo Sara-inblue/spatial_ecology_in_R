@@ -21,4 +21,6 @@ im.plotRGB(mato_grosso92, r=2, g=3, b=1)
 # the rio peixoto should be black (it's water) but it's actully the same color of the bare soil because of the high amount of sediments
 
 mato_grosso2006 <- im.import("matogrosso_ast_2006209_lrg.jpg")
-im.plotRGB(mato_grosso2006, r=2, g=3, b=1)                             
+im.plotRGB(mato_grosso2006, r=2, g=3, b=1)   
+
+# build a multiframe with 1992 and 2006 images

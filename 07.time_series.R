@@ -46,4 +46,6 @@ plot(gstack, col = clg)
 Gdif = gstack[[1]] - gstack[[4]]
 plot(Gdif, col = cldif)  # we use the previous colorRampPalette to underline the difference
 
-
+# we are gonna plot the different years with the RGB space
+# based on the color of the final image we can understand in which year the T was higher
+im.plotRGB(gstack, r=1, g=2, b=3) # the middle looks blueish/blackish thus the T was higher in the last period

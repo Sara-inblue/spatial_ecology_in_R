@@ -14,12 +14,12 @@ im.plotRGB.auto(EN13)
 
 # you can plot the difference between two images or between two elements (layers) of the images
 # using the layers
-dif = EN01[[1]] - EN13[[1]]
-plot(dif)
+ENdif = EN01[[1]] - EN13[[1]]
+plot(ENdif)
 
 # changing the palette
 cldif <- colorRampPalette(c("blue", "white", "red")) (100)
-plot(dif, col = cldif)
+plot(ENdif, col = cldif)
 
 # using data baout temperature in Greenland
 g2000 <- im.import("greenland.2000.tif")
@@ -42,3 +42,8 @@ plot(g2015, col = clg)
 # making a stack with all the images (they are becoming bands of a sngle dataset)
 gstack <- c(g2000, g2005, g2010, g2015)
 plot(gstack, col = clg)
+
+Gdif = gstack[[1]] - gstack[[4]]
+plot(Gdif, col = cldif)  # we use the previous colorRampPalette to underline the difference
+
+

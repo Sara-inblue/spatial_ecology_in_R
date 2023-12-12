@@ -51,13 +51,24 @@ percentage_2006
 
 # Let's build a table with the results
 classes <- c('human', 'forest')
-y1992 <- c(17, 83)    # percentages for the two classes in thta year
+y1992 <- c(17, 83)    # percentages for the two classes in that year
 y2006 <- c(54, 45)
 
 results <- data.frame(classes, y1992, y2006) 
 results
 
 library(ggplot2)
+library(patchwork)
 
 # Final bar plot displaying the results
-p1 <- ggplot(results, aes(x=class, y=percentage_1992, color=class)) + geom_bar(stat="identity", fill="white")
+p1 <- ggplot(results, aes(x=classes, y=y1992, color=classes)) + geom_bar(stat="identity", fill="white")
+p1
+p2 <- ggplot(results, aes(x=classes, y=y2006, color=classes)) + geom_bar(stat="identity", fill="white")
+p2
+
+p1 + p2  # problem in showing data like this is that the scale is different
+
+# final output, rescaled
+p1 <- ggplot(results, aes(x=classes, y=y1992, color=classes)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
+p2 <- ggplot(results, aes(x=classes, y=y2006, color=classes)) + geom_bar(stat="identity", fill="white") + ylim(c(0,100))
+p1 + p2

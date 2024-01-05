@@ -1,10 +1,24 @@
 # Case study on harmuful algal blooms in Lake Garda focusing on cyanobacteria
 
+install.packages("tidyverse")
+install.packages("raster")
+install.packages("waterquality")
 install.packages("sen2r")
+install.packages("sf")
+install.packages("gdalUtils")
+install.packages("magrittr")
+install.packages("rgdal")
+install.packages("caret")
 
-library(ncdf4)
-library(terra)
+library(tidyverse)
+library(raster)
+library(waterquality)
 library(sen2r)
+library(sf)
+library(gdalUtils)
+library(magrittr)
+library(rgdal)
+library(caret)
 
 # set working directory
 setwd("C:/Users/sarar/Downloads")

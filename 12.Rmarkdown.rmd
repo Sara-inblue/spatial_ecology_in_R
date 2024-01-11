@@ -1,0 +1,69 @@
+---
+title: "MarkdownReport"
+author: "Sara Romagnoli"
+date: "2024-01-11"
+output: html_document
+---
+
+# My first markdown document!
+
+Here you can add text if you want
+
+To acces and close the code we use '''
+
+In this case we obtain a result:
+```{r, eval=T}
+2+3
+```
+
+in this case not:
+```{r, eval=F}
+2+3
+```
+
+Using proper packages; the imageRy package as we nuilt at Alma Mater for learningremote sensing:
+```{r, eval=T}
+library(imageRy)
+```
+
+Let's import some data, starting with a list of data:
+```{r, eval=T}
+im.list()
+```
+
+Importing Mato Grosso area image:
+```{r, eval=T}
+Mato1992 <- im.import("matogrosso_l5_1992219_lrg.jpg")
+```
+
+In order to get info on the image, just type the name of the object:
+```{r, eval=T}
+Mato1992
+```
+
+Plotting the Mato Grosso area with the NIR on top of the green component of the RGB 
+```{r, eval=T}
+im.plotRGB(Mato1992, r= 2, g=1, b=3)
+```
+
+Importing Mato Grosso area image without warnings:
+```{r, eval=T, warning=F}
+Mato1992 <- im.import("matogrosso_l5_1992219_lrg.jpg")
+```
+
+Plotting several images all together:
+```{r, eval=T}
+par(mfrow=c(2,2))
+im.plotRGB(Mato1992, r= 1, g=2, b=3)
+im.plotRGB(Mato1992, r= 2, g=1, b=3)
+im.plotRGB(Mato1992, r= 3, g=2, b=1)
+im.plotRGB(Mato1992, r= 1, g=3, b=1)
+```
+
+Calculating spectral indeces:
+```{r, eval=T}
+library(viridis)
+DVI <- Mato1992[[1]]-Mato1992[[2]]
+viridisc <- colorRampPalette(viridis(7))(255)
+plot(DVI, col=viridisc)
+```

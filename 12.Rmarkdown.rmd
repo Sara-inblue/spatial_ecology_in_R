@@ -62,8 +62,14 @@ im.plotRGB(Mato1992, r= 1, g=3, b=1)
 
 Calculating spectral indeces:
 ```{r, eval=T}
+library(terra)
 library(viridis)
 DVI <- Mato1992[[1]]-Mato1992[[2]]
 viridisc <- colorRampPalette(viridis(7))(255)
 plot(DVI, col=viridisc)
+```
+
+```{r, eval=T, warning=F}
+sd5 <- focal(Maro1992[[1]], matrix(1/25, 5, 5), fun+sd)
+plot(sd5, col=viridisc)
 ```

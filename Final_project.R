@@ -75,3 +75,20 @@ plot(current_vel_change_RCP26, col=cl_vir, main="Current velocity Change - RCP2.
 plot(current_vel_change_RCP45, col=cl_vir, main="Current velocity Change - RCP4.5")
 plot(current_vel_change_RCP60, col=cl_vir, main="Current velocity Change - RCP6.0")
 plot(current_vel_change_RCP85, col=cl_vir, main="Current velocity Change - RCP8.5")
+
+# setting an extent to plot the Mediterranean region (minlon, maxlon, minlat, maxlat)
+ext <- c(-10, 40, 30, 45)
+
+Med_present_SST <- crop(present_SST, ext)
+Med_present_salinity <- crop(present_salinity, ext)
+Med_present_current_vel <- crop(present_current_vel, ext)
+
+# importing data about B. europea
+
+# plotting B. europea data on top of the maps of present SST, salinity and current velocity
+par(mfrow=c(1,3)
+plot(Med_present_SST, col=cl_vir, main="Distribution of B. europea with respect to SST")
+plot(Med_present_salinity, col=cl_vir, main="Distribution of B. europea with respect to salinity")
+plot(Med_present_current_vel, col=cl_vir, main="Distribution of B. europea with respect to current velocity")
+
+# performing a pca to understand which of the variables influence more the distribution of B. europea

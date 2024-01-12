@@ -85,7 +85,7 @@ plot(bei, cex=.2)
 # changing the symbol - pch
 plot(bei, cex=.2, pch=19)
 
-# bei.extra is a datast containing data about eleation and gradient
+# bei.extra is a datast containing data about elevation and gradient
 bei.extra
 plot(bei.extra)
 
@@ -131,7 +131,7 @@ plot(elev)
 # we can use the elevation to understand why the trees are distributed in this way (so to understand the density)
 # at higher elevation we have less trees (lower density)
 
-# as an exercise create anothe rmultiframe
+# as an exercise create another rmultiframe
 par(mfrow=c(1,3))
 plot(bei)
 plot(densitymap)
@@ -147,7 +147,7 @@ library(terra)  #it now contains also the rgdal package
 
 # the system.file is going to look for a certain file in the package you insalled
 # external is a folder inside the package sdm that contains a file coll species.shp
-#shp files are colled vector files
+#shp files are called vector files
 file <- system.file("external/species.shp", package="sdm")
 file
 
@@ -245,7 +245,7 @@ points(pres)
 # maybe in one of the dimensions we cannot see some variables that we see as separate are connected
 
 # the 2^ principal component is, by definition, perperndicular to the 1^ one (direction with the largest range of varibility)
-# the 1^ PC is always explaing the highest veribility, thus the one explained by the 2^ one is always smaller
+# the 1^ PC is always explaining the highest veribility, thus the one explained by the 2^ one is always smaller
 
 install.packages("vegan")   # vegetation analysis
 library(vegan)
@@ -279,7 +279,7 @@ plcd2
 plcd1 + plcd2    # they alone are retaining around 70% of variabilty
 
 # final multivariate space showing the correlation in space
-# it allows you to describe different environments in you dataset
+# it allows you to describe different environments in your dataset
 plot(ord)
 
 # ---------------------------
@@ -435,8 +435,8 @@ im.plotRGB(stacksent, r=3, g=4, b=2)
 im.plotRGB(stacksent, r=3, g=2, b=4) 
 
 # Let's look at the correlation between the info in two bands
-# we do it with the pairs function is a scatterplot matrix
-# for example with 5 band there will be 4 pairs for each to be analized and then we divide it by 2 obtain the final number of distances (they repeate once)
+# we do it with the pairs function which is a scatterplot matrix
+# for example with 5 band there will be 4 pairs for each to be analized and then we divide it by 2 obtain the final number of distances (they repeat once)
 pairs(stacksent)
 
 # ---------------------------
@@ -532,7 +532,7 @@ plot(ENdif)
 cldif <- colorRampPalette(c("blue", "white", "red")) (100)
 plot(ENdif, col = cldif)
 
-# using data baout temperature in Greenland
+# using data about temperature in Greenland
 g2000 <- im.import("greenland.2000.tif")
 g2000
 

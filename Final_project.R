@@ -1,4 +1,5 @@
 library(raster)
+library(viridis)
 
 # set working directory
 setwd("C:/Users/sarar/Downloads")
@@ -32,7 +33,45 @@ RCP85_current_vel <- raster("2050_RCP85_Surface_Current_Velocity_Mean.tif")
 # layer 3 = RCP45
 # layer 4 = RCP60
 # layer 5 = RCP85
-temp <- c(present_SST, RCP26_SST, RCP45_SST, RCP60_SST, RCP85_SST)
+SST <- c(present_SST, RCP26_SST, RCP45_SST, RCP60_SST, RCP85_SST)
 sal <- c(present_salinity, RCP26_salinity, RCP45_salinity, RCP60_salinity, RCP85_salinity)
 current_vel <- c(present_current_vel, RCP26_current_vel, RCP45_current_vel, RCP60_current_vel, RCP85_current_vel)
 
+# highlighting the change of the variables between the present and projected periods
+SST_change_RCP26 <- SST[[2]]-SST[[1]]
+sal_change_RCP26 <- sal[[2]]-sal[[1]]
+current_vel_change_RCP26 <- current_vel[[2]]-current_vel[[1]]
+
+SST_change_RCP45 <- SST[[3]]-SST[[1]]
+sal_change_RCP45 <- sal[[3]]-sal[[1]]
+current_vel_change_RCP45 <- current_vel[[3]]-current_vel[[1]]
+
+SST_change_RCP60 <- SST[[4]]-SST[[1]]
+sal_change_RCP60 <- sal[[4]]-sal[[1]]
+current_vel_change_RCP60 <- current_vel[[4]]-current_vel[[1]]
+
+SST_change_RCP85 <- SST[[5]]-SST[[1]]
+sal_change_RCP85 <- sal[[5]]-sal[[1]]
+current_vel_change_RCP85 <- current_vel[[5]]-current_vel[[1]]
+
+# defining the color palette to use in the plots
+cl_vir <- colorRampPalette(viridis(7))(255)
+
+# plotting the changes in the variables
+par(mfrow=c(2,2))
+plot(SST_change_RCP26, col=cl_vir, main="SST Change - RCP2.6")
+plot(SST_change_RCP45, col=cl_vir, main="SST Change - RCP4.5")
+plot(SST_change_RCP60, col=cl_vir, main="SST Change - RCP6.0")
+plot(SST_change_RCP85, col=cl_vir, main="SST Change - RCP8.5")
+
+par(mfrow=c(2,2))
+plot(sal_change_RCP26, col=cl_vir, main="Salinity Change - RCP2.6")
+plot(sal_change_RCP45, col=cl_vir, main="Salinity Change - RCP4.5")
+plot(sal_change_RCP60, col=cl_vir, main="Salinity Change - RCP6.0")
+plot(sal_change_RCP85, col=cl_vir, main="Salinity Change - RCP8.5")
+
+par(mfrow=c(2,2))
+plot(current_vel_change_RCP26, col=cl_vir, main="Current velocity Change - RCP2.6")
+plot(current_vel_change_RCP45, col=cl_vir, main="Current velocity Change - RCP4.5")
+plot(current_vel_change_RCP60, col=cl_vir, main="Current velocity Change - RCP6.0")
+plot(current_vel_change_RCP85, col=cl_vir, main="Current velocity Change - RCP8.5")

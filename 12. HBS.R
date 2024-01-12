@@ -26,20 +26,38 @@ setwd("C:/Users/sarar/Downloads")
 sen2cor("C:/Users/sarar/Downloads/S2B_MSIL2A_20220824T101559_N0400_R065_T32TPR_20220824T122701.SAFE")
 
 # load data
-Lake_Garda_0711 <- rast("c_gls_LWQ100_202208110000_GLOBAL_MSI_V1.5.nc")
-plot(Lake_Garda_0711)
+winnipeg <- rast("lakewinnipeg_oli2_2023268_lrg.jpg")
 
-Lake_Garda_0721 <- rast("c_gls_LWQ100_202208110000_GLOBAL_MSI_V1.5.nc")
-plot(Lake_Garda_021)
+plotRGB(winnipeg, r=1, g=2, b=3)
 
-Lake_Garda_0801 <- rast("c_gls_LWQ100_202208010000_GLOBAL_MSI_V1.5.nc")
-plot(Lake_Garda_0801)
+w_clusters <- im.classify(winnipeg, num_clusters=3)
+plot(w_clusters)
 
-Lake_Garda_0811 <- rast("c_gls_LWQ100_202208110000_GLOBAL_MSI_V1.5.nc")
-plot(Lake_Garda_0811)
+----------------------
 
-# converting satellite imagery inti Bottom-Of-Atmosphere (BoA) reflectance using
-Lake_Garda_0711_BoA <- sen2r(Lake_Garda_0711.SAFE)
+setwd("C:/Users/sarar/Downloads")
+file_path <- "B_europea_14.csv"
+B_europea_14 <- read.csv(file_path)
 
+lon <- B_europea_14[1]
+lat <- B_europea_14[2]
+plot(lon, lat)
 
+B_europea_cromis <- read.csv("Programme_CROMIS.csv")
 
+# Install and load the ggplot2 package
+install.packages("ggplot2")
+library(ggplot2)
+
+# Replace "your_data.csv" with the actual file path
+file_path <- "B_europea_14.csv"
+
+# Read the CSV file into a data frame
+data <- read.csv(file_path)
+
+# Create a scatter plot with longitudes and latitudes
+ggplot(data, aes(x = Longitude, y = Latitude)) +
+  geom_point() +
+  labs(title = "Scatter Plot of Longitudes and Latitudes",
+       x = "Longitude",
+       y = "Latitude")

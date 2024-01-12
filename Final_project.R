@@ -84,6 +84,9 @@ Med_present_salinity <- crop(present_salinity, ext)
 Med_present_current_vel <- crop(present_current_vel, ext)
 
 # importing data about B. europea
+setwd("C:/Users/sarar/OneDrive - Alma Mater Studiorum Università di Bologna/Documents/Unibo/Science of climate/2^ anno/Marine ecosystems/HSM_project/B. europaea/Datasets_HSM_14")
+Programme_BioObs <- read.csv("Programme_BioObs.csv")
+plot(Programme_BioObs)
 
 # plotting B. europea data on top of the maps of present SST, salinity and current velocity
 par(mfrow=c(1,3)

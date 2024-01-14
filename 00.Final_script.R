@@ -750,16 +750,26 @@ im.list()
 
 sent <- im.import("sentinel.png")
 
+# let's create a scatterplox matrix
+# A scatterplot matrix is a grid of scatterplots, where each variable in your dataset is plotted against every other variable
+# This is particularly useful for exploring relationships and identifying patterns between pairs of variables in a multivariate dataset
 pairs(sent)
 
 # perform PCA on sent
-sentpc <- im.pca(sent)
+sentpc <- im.pca2(sent)
 pc1 <- sentpc$PC1
+
+# The result show the standard deviation and the rotation matrix
+# standard deviation: Percentge of variability represented by each pc
+# rotation matrix:  linear combination of the original bands to form the principal components.
+# Each column corresponds to a principal component, and each row corresponds to an original band.
+# For example, the first column (PC1) shows how each original band contributes to the first principal component.
 
 viridisc <- colorRampPalette(viridis(7))(255)
 plot(pc1, col=viridisc)
 
 # calculating standard deviation ontop of pc1
+# Calculating the standard deviation on top of PC1 provides information about the variability of the values in PC1 across spatial neighborhoods
 pc1sd3 <- focal(pc1, matrix(1/9, 3, 3), fun=sd)
 plot(pc1sd3, col=viridisc)
 

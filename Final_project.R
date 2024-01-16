@@ -6,16 +6,16 @@ setwd("C:/Users/sarar/Downloads")
 
 # import data
 # "present" data refer to the period 2000-2014
-present_SST <- temp <- raster("Present_Surface_Temperature_Mean.tif")
+present_SST <- raster("Present_Surface_Temperature_Mean.tif")
 present_salinity <- raster("Present_Surface_Salinity_Mean.tif")
 present_current_vel <- raster("Present_Surface_Current_Velocity_Mean.tif")
 
 # projected data for the period 2040-2050 using the representative concentration pathway scenarios (RCP) formulated by the IPCC
-RCP26_SST <- temp <- raster("2050_RCP26_Surface_Temperature_Mean.tif")
+RCP26_SST <- raster("2050_RCP26_Surface_Temperature_Mean.tif")
 RCP26_salinity <- raster("2050_RCP26_Surface_Salinity_Mean.tif")
 RCP26_current_vel <- raster("2050_RCP26_Surface_Current_Velocity_Mean.tif")
 
-RCP45_SST <- temp <- raster("2050_RCP45_Surface_Temperature_Mean.tif")
+RCP45_SST <- raster("2050_RCP45_Surface_Temperature_Mean.tif")
 RCP45_salinity <- raster("2050_RCP45_Surface_Salinity_Mean.tif")
 RCP45_current_vel <- raster("2050_RCP45_Surface_Current_Velocity_Mean.tif")
 

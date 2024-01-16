@@ -767,11 +767,14 @@ sent <- im.import("sentinel.png")
 # let's create a scatterplox matrix
 # A scatterplot matrix is a grid of scatterplots, where each variable in your dataset is plotted against every other variable
 # This is particularly useful for exploring relationships and identifying patterns between pairs of variables in a multivariate dataset
+
 pairs(sent)
+#sentinel_2 and sentinel_3 are red and green and they are really correlated to each other, the p value is 0.98
 
 # perform PCA on sent
 sentpc <- im.pca2(sent)
 pc1 <- sentpc$PC1 # it explains 77% of the varibility
+#in this case there is no meaning for the color
 
 # The result show the standard deviation and the rotation matrix
 # standard deviation: percentge of variability represented by each pc

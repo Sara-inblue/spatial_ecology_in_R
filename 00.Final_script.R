@@ -38,7 +38,7 @@ final
 
 final^2
 
-# Array
+# How to create an array
 sophi <- c(10, 20, 30, 50, 70) # c indicates a function
 sophi
 
@@ -120,7 +120,7 @@ cl2 <- colorRampPalette(c("magenta4", "hotpink2", "deeppink1", "plum1"))(100)
 plot(densitymap, col=cl2)
 
 # creating a multiframe (like a table)
-par(mfrow= c(1,2))  # we put c(1,2) because their are part of an array
+par(mfrow= c(1,2))  # we put c(1,2) because their are part of an array. 1 row, 2 columns
 plot(densitymap)
 plot(elev)
 
@@ -145,34 +145,35 @@ plot(elev)
 library(sdm) # spatial distribution model
 library(terra)  #it now contains also the rgdal package
 
-# the system.file is going to look for a certain file in the package you insalled
-# external is a folder inside the package sdm that contains a file coll species.shp
-#shp files are called vector files
+# the system.file is going to look for a certain file in the package you insalled, returns the complete path
+# external is a folder inside the package sdm that contains a file called species.shp
+# shp files are called vector files
 file <- system.file("external/species.shp", package="sdm")
 file
 
 # vect is a function to pass from the shp file to the points
-species <- vect(file)
-species
+# vect is  function of terra
+frog <- vect(file)
+frog
 
 # looking at the occurrence
 # gives you a series of 0 and 1. These are presence (1) absence (0) data.
-species$Occurrence
+frog$Occurrence
 
 # There are problems with 0 (uncertain data), you might have missed the thing you where looking for.
 
-plot(species)    #plots all data, both presences and absences
+plot(frog)    #plots all data, both presences and absences
 
 # we can select what we want to plot: presences or absences
 # square brackts are used to select elements
-pres <- species[species$Occurrence == 1]  # select presences
+pres <- species[frog$Occurrence == 1]  # select presences
 
 pres$Occurrence
 
 plot(pres) # plot presences
 
 # select absences
-abse <- species[species$Occurrence == 0]
+abse <- species[frog$Occurrence == 0]
 plot(abse)
 
 # plot presences and absences one after the other 
@@ -251,7 +252,7 @@ install.packages("vegan")   # vegetation analysis
 library(vegan)
 
 data(dune)   # matrix that contains the number of individuals for different species
-dune
+dune # columns are species and rows different location
 
 head(dune)  # it shows the first 6 rows of the dataset
 tail(dune)  # it shows you the last 3 rows of the dataset
@@ -266,8 +267,10 @@ ldc2 <- 3.1166
 ldc3 <- 1.30055
 ldc4 <- 1.47888
 
+# calculating the tot lenght
 total = ldc1 + ldc2 + ldc3 + ldc4
 
+# calculating the percentage of the explained variability
 plcd1 = ldc1 * 100 / total
 plcd2 = ldc2 * 100 / total
 plcd3 = ldc3 * 100 / total
@@ -280,6 +283,9 @@ plcd1 + plcd2    # they alone are retaining around 70% of variabilty
 
 # final multivariate space showing the correlation in space
 # it allows you to describe different environments in your dataset
+# numbers corresponds to the locations
+# species close to each other are influenced in a similar way by the same variables
+# we can understand in which habitats (locations) is more likely to find a species
 plot(ord)
 
 # ---------------------------
@@ -302,12 +308,12 @@ head(kerinci)
 # The package overlap works entirely in radians: fitting density curves uses trigonometric functions (sin, cos, tan),
 # so this speeds up simulations. The conversion is straightforward: kerinci$Time * 2 * pi
 
-# We add a new column to the dataset containing our new variable
+# We add a new column to the dataset containing our new variable (time in radians)
 kerinci$timeRad <- kerinci$Time * 2 * pi         # we need to pass from linear to circular time because of the manner the package is working
 head(kerinci)
 
 # sequel or sql
-# [] is selecting elements inside the dataset
+# [] selects elements inside the dataset
 
 # sps is the column indicating the species
 tiger <- kerinci[kerinci$Sps == "tiger",]   # the come is needed to close the query
@@ -431,12 +437,13 @@ im.plotRGB(stacksent, r=4, g=3, b=2)
 # the purple part is bare soil, rock and cities
 im.plotRGB(stacksent, r=3, g=4, b=2) 
 
-# we use ble to print the NIR
+# we use blue to print the NIR
 im.plotRGB(stacksent, r=3, g=2, b=4) 
 
-# Let's look at the correlation between the info in two bands
+# Let's look at the correlation between the info in two bands (if they "see" the same things)
 # we do it with the pairs function which is a scatterplot matrix
 # for example with 5 band there will be 4 pairs for each to be analized and then we divide it by 2 obtain the final number of distances (they repeat once)
+# the histograms report the frequency of the values
 pairs(stacksent)
 
 # ---------------------------
@@ -498,6 +505,9 @@ plot(ndvi1992, col = cl)
 
 ndvi2006 = (mato_grosso2006[[1]] - mato_grosso2006[[2]]) / (mato_grosso2006[[1]] + mato_grosso2006[[2]]) 
 plot(ndvi2006, col = cl)
+
+# we can do the same thing with an imagery function
+ndvi2006a <- im.ndvi(m2006, 1, 2) # the numbers refer to the bands you want to use
 
 par(mfrow = c(1, 2))
 plot(ndvi1992, col = cl)
@@ -624,7 +634,7 @@ surf_soil_moisture2023_25_crop <- crop(surf_soil_moisture2023_25, ext)
 plot(surf_soil_moisture2023_25_crop[[1]], col=cl)
 
 surf_soil_moist2023_24 <- rast("c_gls_SSM1km_202311240000_CEURO_S1CSAR_V1.2.1.nc")
-surf_soil_moisture2023_24_crop <- crop(surf_soil_moisture2023_24, ext)  # gives error becase probabli in this image there's nothing at the selected ext
+surf_soil_moisture2023_24_crop <- crop(surf_soil_moisture2023_24, ext)  # gives error becase probably in this image there's nothing at the selected ext
 
 # ---------------------------
 
@@ -666,9 +676,11 @@ plot(m2006_cluster[[1]])
 f1992 <- freq(m1992_cluster)
 f1992
 
-# Let's calculate the percentage
+# calculate the tot number of pixel
 tot_1992 <- ncell(m1992_cluster)
 tot_1992
+
+# calculate the percentage
 percentage_1992 <- f1992 * 100 / tot_1992 
 percentage_1992
 
@@ -730,6 +742,8 @@ plot(nir)
 # let's use a moving window
 # the matrix describes the dimensions of the moving window: composed by 9 pixels (1/9) distributed as 3 by 3
 # "fun" call the function
+# we calculate the std to know where the varibility is higher (for example at the boundaries [coast])
+# increasing the size of the window the variability increases
 sd_glacier <- focal(nir, matrix(1/9, 3, 3), fun=sd)
 plot(sd_glacier)
 
@@ -739,7 +753,7 @@ plot(sd_glacier, col=cl_vir)
 # ---------------------------
 
 # 11 principal component analysis
-# choosing the layer to use objectively using pca
+# choosing the layer to use objectively using pca (layer explaining the max variability)
 # pca compact all the data in one band which best represent all of it
 
 library(imageRy)
@@ -757,10 +771,10 @@ pairs(sent)
 
 # perform PCA on sent
 sentpc <- im.pca2(sent)
-pc1 <- sentpc$PC1
+pc1 <- sentpc$PC1 # it explains 77% of the varibility
 
 # The result show the standard deviation and the rotation matrix
-# standard deviation: Percentge of variability represented by each pc
+# standard deviation: percentge of variability represented by each pc
 # rotation matrix:  linear combination of the original bands to form the principal components.
 # Each column corresponds to a principal component, and each row corresponds to an original band.
 # For example, the first column (PC1) shows how each original band contributes to the first principal component.
@@ -778,7 +792,7 @@ plot(pc1sd7, col=viridisc)
 
 par(mfrow=c(2,3))
 im.plotRGB(sent, 2, 1, 3)
-# sd from the variability script:
+# standard devition
 plot(sd3, col=viridisc)
 plot(sd7, col=viridisc)
 plot(pc1, col=viridisc)

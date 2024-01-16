@@ -1,33 +1,32 @@
-library(raster)
+library(terra)
 library(viridis)
 library(sf)
-library(terra)
 
 # set working directory
-setwd("C:/Users/sarar/Downloads")
+setwd("C:/Users/sarar/OneDrive - Alma Mater Studiorum Università di Bologna/Documents/Unibo/Science of climate/2^ anno/Spatil ecology in R/Final project")
 
 # import data
 # "present" data refer to the period 2000-2014
 present_SST <- rast("Present_Surface_Temperature_Mean.tif")
-present_salinity <- raster("Present_Surface_Salinity_Mean.tif")
-present_current_vel <- raster("Present_Surface_Current_Velocity_Mean.tif")
+present_salinity <- rast("Present_Surface_Salinity_Mean.tif")
+present_current_vel <- rast("Present_Surface_Current_Velocity_Mean.tif")
 
 # projected data for the period 2040-2050 using the representative concentration pathway scenarios (RCP) formulated by the IPCC
-RCP26_SST <- raster("2050_RCP26_Surface_Temperature_Mean.tif")
-RCP26_salinity <- raster("2050_RCP26_Surface_Salinity_Mean.tif")
-RCP26_current_vel <- raster("2050_RCP26_Surface_Current_Velocity_Mean.tif")
+RCP26_SST <- rast("2050_RCP26_Surface_Temperature_Mean.tif")
+RCP26_salinity <- rast("2050_RCP26_Surface_Salinity_Mean.tif")
+RCP26_current_vel <- rast("2050_RCP26_Surface_Current_Velocity_Mean.tif")
 
-RCP45_SST <- raster("2050_RCP45_Surface_Temperature_Mean.tif")
-RCP45_salinity <- raster("2050_RCP45_Surface_Salinity_Mean.tif")
-RCP45_current_vel <- raster("2050_RCP45_Surface_Current_Velocity_Mean.tif")
+RCP45_SST <- rast("2050_RCP45_Surface_Temperature_Mean.tif")
+RCP45_salinity <- rast("2050_RCP45_Surface_Salinity_Mean.tif")
+RCP45_current_vel <- rast("2050_RCP45_Surface_Current_Velocity_Mean.tif")
 
-RCP60_SST <- temp <- raster("2050_RCP60_Surface_Temperature_Mean.tif")
-RCP60_salinity <- raster("2050_RCP60_Surface_Salinity_Mean.tif")
-RCP60_current_vel <- raster("2050_RCP60_Surface_Current_Velocity_Mean.tif")
+RCP60_SST <- temp <- rast("2050_RCP60_Surface_Temperature_Mean.tif")
+RCP60_salinity <- rast("2050_RCP60_Surface_Salinity_Mean.tif")
+RCP60_current_vel <- rast("2050_RCP60_Surface_Current_Velocity_Mean.tif")
 
-RCP85_SST <- temp <- raster("2050_RCP85_Surface_Temperature_Mean.tif")
-RCP85_salinity <- raster("2050_RCP85_Surface_Salinity_Mean.tif")
-RCP85_current_vel <- raster("2050_RCP85_Surface_Current_Velocity_Mean.tif")
+RCP85_SST <- rast("2050_RCP85_Surface_Temperature_Mean.tif")
+RCP85_salinity <- rast("2050_RCP85_Surface_Salinity_Mean.tif")
+RCP85_current_vel <- rast("2050_RCP85_Surface_Current_Velocity_Mean.tif")
 
 # create a stack for each variable containing the present and projected data
 # layer 1 = present

@@ -1,6 +1,13 @@
+# https://cran.r-project.org/web/packages/terra/index.html
 library(terra)
+
+# https://cran.r-project.org/web/packages/viridis/vignettes/intro-to-viridis.html
 library(viridis)
+
+# https://cran.r-project.org/web/packages/sf/index.html
 library(sf)
+
+# https://cran.r-project.org/web/packages/dplyr/index.html
 library(dplyr)
 
 # set working directory
@@ -119,7 +126,7 @@ B_europaea_distr <- bind_rows(
   Mass_mortality_events_spat[,16],
   Programme_CARTHAM_spat[,15],
   Programme_CROMIS_spat[,15]
-)
+  )
 
 # plotting B. europaea data on top of the maps of present SST, salinity and current velocity
 par(mfrow=c(1,3))

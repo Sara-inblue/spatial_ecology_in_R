@@ -169,3 +169,13 @@ Med_change_RCP45 <- c(Med_SST_change_RCP45, Med_sal_change_RCP45, Med_current_ve
 Med_change_RCP60 <- c(Med_SST_change_RCP60, Med_sal_change_RCP60, Med_current_vel_change_RCP60)
 
 Med_change_RCP85 <- c(Med_SST_change_RCP85, Med_sal_change_RCP85, Med_current_vel_change_RCP85)
+
+
+# performing a pca to find out the most influencing variable in each scenario
+pca_Med_change_RCP26 <- im.pca2(Med_change_RCP26)
+
+pca_Med_change_RCP45 <- im.pca2(Med_change_RCP45)
+
+pca_Med_change_RCP60 <- im.pca2(Med_change_RCP60)
+
+pca_Med_change_RCP85 <- im.pca2(Med_change_RCP85)

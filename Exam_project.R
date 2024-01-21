@@ -10,6 +10,8 @@ library(sf)
 # https://cran.r-project.org/web/packages/dplyr/index.html
 library(dplyr)
 
+library(imageRy)
+
 # set working directory
 setwd("C:/Users/sarar/OneDrive - Alma Mater Studiorum Università di Bologna/Documents/Unibo/Science of climate/2^ anno/Spatial ecology in R/Exam project R/Env_variables")
 
@@ -141,3 +143,20 @@ points(B_europaea_distr, col="magenta")
 
 plot(Med_present_pH, col=cl_vir, main="Distribution of B. europaea with respect to pH")
 points(B_europaea_distr, col="magenta")
+
+# crop the changes to the Mediterranean area
+Med_SST_change_RCP26 <- crop(SST_change_RCP26, ext)
+Med_sal_change_RCP26 <- crop(sal_change_RCP26, ext)
+Med_current_vel_change_RCP26 <- crop(current_vel_change_RCP26, ext)
+
+Med_SST_change_RCP45 <- crop(SST_change_RCP45, ext)
+Med_sal_change_RCP45 <- crop(sal_change_RCP45, ext)
+Med_current_vel_change_RCP45 <- crop(current_vel_change_RCP45, ext)
+
+Med_SST_change_RCP60 <- crop(SST_change_RCP60, ext)
+Med_sal_change_RCP60 <- crop(sal_change_RCP60, ext)
+Med_current_vel_change_RCP60 <- crop(current_vel_change_RCP60, ext)
+
+Med_SST_change_RCP85 <- crop(SST_change_RCP85, ext)
+Med_sal_change_RCP85 <- crop(sal_change_RCP85, ext)
+Med_current_vel_change_RCP85 <- crop(current_vel_change_RCP85, ext)

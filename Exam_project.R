@@ -160,3 +160,12 @@ Med_current_vel_change_RCP60 <- crop(current_vel_change_RCP60, ext)
 Med_SST_change_RCP85 <- crop(SST_change_RCP85, ext)
 Med_sal_change_RCP85 <- crop(sal_change_RCP85, ext)
 Med_current_vel_change_RCP85 <- crop(current_vel_change_RCP85, ext)
+
+# create a stack of the variability for each scenario
+Med_change_RCP26 <- c(Med_SST_change_RCP26, Med_sal_change_RCP26, Med_current_vel_change_RCP26)
+
+Med_change_RCP45 <- c(Med_SST_change_RCP45, Med_sal_change_RCP45, Med_current_vel_change_RCP45)
+
+Med_change_RCP60 <- c(Med_SST_change_RCP60, Med_sal_change_RCP60, Med_current_vel_change_RCP60)
+
+Med_change_RCP85 <- c(Med_SST_change_RCP85, Med_sal_change_RCP85, Med_current_vel_change_RCP85)

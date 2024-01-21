@@ -171,11 +171,11 @@ Med_change_RCP60 <- c(Med_SST_change_RCP60, Med_sal_change_RCP60, Med_current_ve
 Med_change_RCP85 <- c(Med_SST_change_RCP85, Med_sal_change_RCP85, Med_current_vel_change_RCP85)
 
 
-# performing a pca to find out the most influencing variable in each scenario
-pca_Med_change_RCP26 <- im.pca2(Med_change_RCP26)
+# plotting the variability for each scenario in the RGB space
+RGB_Med_change_RCP26 <- im.plotRGB(Med_change_RCP26, r=1, g=2, b=3)
 
-pca_Med_change_RCP45 <- im.pca2(Med_change_RCP45)
+RGB_Med_change_RCP45 <- im.plotRGB(Med_change_RCP45, r=1, g=2, b=3)
 
-pca_Med_change_RCP60 <- im.pca2(Med_change_RCP60)
+RGB_Med_change_RCP60 <- im.plotRGB(Med_change_RCP60, r=1, g=2, b=3)
 
-pca_Med_change_RCP85 <- im.pca2(Med_change_RCP85)
+RGB_Med_change_RCP80 <- im.plotRGB(Med_change_RCP85, r=1, g=2, b=3)

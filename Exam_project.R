@@ -172,6 +172,9 @@ Med_change_RCP85 <- c(Med_SST_change_RCP85, Med_sal_change_RCP85, Med_current_ve
 
 
 # plotting the variability for each scenario in the RGB space
+# red = SST
+# green = salinity
+# blue = current velocity
 RGB_Med_change_RCP26 <- im.plotRGB(Med_change_RCP26, r=1, g=2, b=3)
 
 RGB_Med_change_RCP45 <- im.plotRGB(Med_change_RCP45, r=1, g=2, b=3)

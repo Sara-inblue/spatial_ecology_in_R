@@ -122,6 +122,7 @@ Programme_CARTHAM_spat <- st_as_sf(Programme_CARTHAM, coords = c("decimalLongitu
 Programme_CROMIS_spat <- st_as_sf(Programme_CROMIS, coords = c("decimalLongitude", "decimalLatitude"),
                                   crs = crs(Med_present_SST))
 
+# creating an object for B.europaea distribution
 B_europaea_distr <- bind_rows(
   Programme_BioObs_spat[,15],
   iNaturalist_spat[,16],
